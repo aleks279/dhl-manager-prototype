@@ -20,6 +20,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'paperclip'
 gem 'fog'
+gem 'active_skin'
 
 # misc
 gem 'turbolinks'
