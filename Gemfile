@@ -50,6 +50,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'guard-hologram', require: false
+  gem "rails-erd"
 end
 
 group :production do

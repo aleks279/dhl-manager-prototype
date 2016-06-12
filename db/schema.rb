@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612010802) do
+ActiveRecord::Schema.define(version: 20160612022634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 20160612010802) do
     t.string   "name"
     t.string   "last_name"
     t.string   "address"
-    t.string   "email"
     t.string   "phone"
     t.string   "identity_card_number"
     t.datetime "created_at",           null: false
@@ -133,6 +132,7 @@ ActiveRecord::Schema.define(version: 20160612010802) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.float    "weight"
+    t.float    "price"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "category_id"
@@ -268,8 +268,10 @@ ActiveRecord::Schema.define(version: 20160612010802) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "driver_id"
   end
 
+  add_index "users", ["driver_id"], name: "index_users_on_driver_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
@@ -287,4 +289,5 @@ ActiveRecord::Schema.define(version: 20160612010802) do
   add_foreign_key "products", "presentations"
   add_foreign_key "products", "types"
   add_foreign_key "trucks", "locations"
+  add_foreign_key "users", "drivers"
 end

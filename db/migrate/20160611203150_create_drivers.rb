@@ -4,7 +4,6 @@ class CreateDrivers < ActiveRecord::Migration
       t.string :name
       t.string :last_name
       t.string :address
-      t.string :email
       t.string :phone
       t.string :identity_card_number
 
