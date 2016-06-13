@@ -10,20 +10,16 @@ ActiveAdmin.register Product do
     column :weight
     column :price
     column 'Category', sortable: :category_id do |product|
-      category = product.category
-      category.name if category
+      Category.find(product.category_id).name if product.category_id
     end
     column 'Presentation', sortable: :presentation_id do |product|
-      presentation = product.presentation
-      presentation.name if presentation
+      Presentation.find(product.presentation_id).name if product.presentation_id
     end
     column 'Type', sortable: :type_id do |product|
-      type = product.type
-      type.name if type
+      Type.find(product.type_id).name if product.type_id
     end
     column 'Brand', sortable: :brand_id do |product|
-      brand = product.brand
-      brand.name if brand
+      Brand.find(product.brand_id).name if product.brand_id
     end
     actions
   end
