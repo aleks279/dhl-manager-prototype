@@ -30,6 +30,7 @@ gem 'annotate', '>=2.6.0'
 gem 'haml'
 gem 'haml-rails', '~> 0.9.0'
 gem 'country_select'
+gem 'faker'
 
 group :test do
   gem 'rspec-rails', '~> 3.4'
@@ -38,7 +39,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'simplecov', '~> 0.9'
-  gem 'faker'
 end
 
 group :development, :test do
