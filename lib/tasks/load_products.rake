@@ -10,6 +10,8 @@ namespace :load_products do
     Rake::Task['load_products:presentations'].invoke
     Rake::Task['load_products:products'].invoke
     Rake::Task['load_products:admin_user'].invoke
+    Rake::Task['load_users:drivers'].invoke
+    Rake::Task['load_users:trucks'].invoke
   end
 
   desc "Creates admin user"

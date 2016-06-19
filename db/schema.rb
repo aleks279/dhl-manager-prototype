@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612022634) do
+ActiveRecord::Schema.define(version: 20160618194644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,9 +71,22 @@ ActiveRecord::Schema.define(version: 20160612022634) do
     t.string   "address"
     t.string   "phone"
     t.string   "identity_card_number"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
+
+  add_index "drivers", ["email"], name: "index_drivers_on_email", unique: true, using: :btree
+  add_index "drivers", ["reset_password_token"], name: "index_drivers_on_reset_password_token", unique: true, using: :btree
 
   create_table "fuel_types", force: :cascade do |t|
     t.string   "name"
@@ -146,16 +159,16 @@ ActiveRecord::Schema.define(version: 20160612022634) do
   add_index "products", ["presentation_id"], name: "index_products_on_presentation_id", using: :btree
   add_index "products", ["type_id"], name: "index_products_on_type_id", using: :btree
 
-  create_table "products_brands", id: false, force: :cascade do |t|
+  create_table "products_brand", id: false, force: :cascade do |t|
   end
 
-  create_table "products_categories", id: false, force: :cascade do |t|
+  create_table "products_category", id: false, force: :cascade do |t|
   end
 
-  create_table "products_presentations", id: false, force: :cascade do |t|
+  create_table "products_presentation", id: false, force: :cascade do |t|
   end
 
-  create_table "products_types", id: false, force: :cascade do |t|
+  create_table "products_type", id: false, force: :cascade do |t|
   end
 
   create_table "products_warehouses", id: false, force: :cascade do |t|
@@ -255,26 +268,6 @@ ActiveRecord::Schema.define(version: 20160612022634) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.integer  "driver_id"
-  end
-
-  add_index "users", ["driver_id"], name: "index_users_on_driver_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
   create_table "warehouses", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -289,5 +282,4 @@ ActiveRecord::Schema.define(version: 20160612022634) do
   add_foreign_key "products", "presentations"
   add_foreign_key "products", "types"
   add_foreign_key "trucks", "locations"
-  add_foreign_key "users", "drivers"
 end
