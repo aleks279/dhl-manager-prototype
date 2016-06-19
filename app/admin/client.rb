@@ -9,14 +9,13 @@ ActiveAdmin.register Client do
     column :name
     column :email
     column :phone
-    column 'Location', sortable: :location_id do |client|
-      location = client.location
-      "#{location.latitude}, #{location.longitude}" if location
+    column 'Location' do |client|
+      "Lat: #{client.latitude}, Long: #{client.longitude}"
     end
-    column 'Schedule', sortable: :schedule_id do |client|
-      schedule = client.schedule
-      "Available hours: #{schedule.start_time} to #{schedule.end_time}" + "\n" + "On: #{schedule.day}" if schedule
-    end
+    # column 'Schedule', sortable: :schedule_id do |client|
+    #   schedule = client.schedule
+    #   "Available hours: #{schedule.start_time} to #{schedule.end_time}" + "\n" + "On: #{schedule.day}" if schedule
+    # end
     actions
   end
 
@@ -29,6 +28,9 @@ ActiveAdmin.register Client do
       f.input :name
       f.input :email
       f.input :phone
+      f.input :latitude
+      t.input :longitude
+
     end
     f.actions
   end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :drivers
   resources :trucks
   resources :routes
+  resources :clients
 
   root 'pages#choose_user_type'
 end

@@ -1,0 +1,27 @@
+#map
+:javascript
+  function initMap() {
+    var location = {lat: #{ resource[0].latitude }, lng: #{ resource[0].longitude } };
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+        center: location,
+        zoom: 12
+    });
+
+    var clients = #{ resource.to_json }
+
+    for (i = 0; i < clients.length; i++) {
+      var loc = {lat: parseFloat(clients[i].latitude), lng: parseFloat(clients[i].longitude) };
+      addMarker(loc, map);
+    }
+  }
+
+  // Adds a marker to the map.
+  function addMarker(location, map) {
+    var marker = new google.maps.Marker({
+      position: location,
+      label: 'T',
+      map: map
+    });
+  }
+%script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyChOkziUov5u1-kYoHw7lc5smTGitC30QM&callback=initMap"}

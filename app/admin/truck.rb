@@ -10,9 +10,8 @@ ActiveAdmin.register Truck do
     column :year
     column :model
     column :weight_capacity
-    column 'Location', sortable: :location_id do |truck|
-      location = Location.find(truck.location_id) if truck.location_id
-      "#{location.latitude}, #{location.longitude}" if location
+    column 'Location' do |truck|
+      "Lat: #{truck.latitude}, Long: #{truck.longitude}"
     end
     actions
   end

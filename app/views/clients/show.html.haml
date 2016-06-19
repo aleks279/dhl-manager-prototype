@@ -1,0 +1,31 @@
+= render partial: 'partials/cover_board_client', locals: { resource: @client }
+
+.row
+  .col-md-6.col-md-offset-3.lightgrey
+    %hr
+    %h3 Client information:
+    %h4.bottom_margin
+      Email:
+    %p.bottom_margin
+      #{ @client.email }
+    %h4.bottom_margin
+      Phone:
+    %p.bottom_margin
+      #{ @client.phone }
+    %h4.bottom_margin
+      Route:
+    %p.bottom_margin
+      #{ Route.find(@client.route_id).name }
+    %h4.bottom_margin
+
+.row
+  .col-md-6.col-md-offset-3.lightgrey
+    %hr
+    %h3 Location:
+    .spacing-top
+      = render partial: 'partials/location', locals: { resource: @client }
+
+.row
+  .col-md-6.col-md-offset-3.lightgrey
+    %hr
+    .col-md-offset-5

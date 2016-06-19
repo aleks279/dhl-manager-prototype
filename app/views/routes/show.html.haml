@@ -1,16 +1,25 @@
 = render partial: 'partials/cover_board_route', locals: { resource: @route }
 
-/ .row
-/   .col-md-6.col-md-offset-3.lightgrey
-/     %hr
-/     %h3 Videos:
-/     - @truck.youtube_links.in_groups_of(5).each do |link_group|
-/       .spacing-top
-/         - link_group.each do |link|
-/           - if link
-/             .col-sm-2.spacing-top
-/               = link_to "#{image_tag get_youtube_thumbnail(link.url)}".html_safe, link.url
-
+.row
+  .col-md-6.col-md-offset-3.lightgrey
+    %hr
+    %h3 Clients:
+    - Client.where(route_id: @route.id).in_groups_of(5).each do |client_group|
+      .spacing-top
+        - client_group.each do |client|
+          - if client
+            .col-sm-2.spacing-top
+              = link_to "#{image_tag 'person-placeholder.png'}".html_safe, client
+              .col-md-12
+                %h3 #{ client.name }
+                %hr
+- unless Client.where(route_id: @route.id).empty?
+  .row
+    .col-md-6.col-md-offset-3.lightgrey
+      %hr
+      %h3 Location:
+      .spacing-top
+        = render partial: 'partials/location_routes', locals: { resource: Client.where(route_id: @route.id) }
 .row
   .col-md-6.col-md-offset-3.lightgrey
     %hr

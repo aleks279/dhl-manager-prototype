@@ -1,8 +1,7 @@
 class AddClientsToRoute < ActiveRecord::Migration
   def change
     create_table :routes_clients, id: false do |t|
-      t.belongs_to :clients, index: true
-      t.belongs_to :route, index: true
+      add_reference :clients, :route, index: true, foreign_key: true
     end
   end
 end
