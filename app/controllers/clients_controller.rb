@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
 
+  before_action :authenticate_driver!
+
   before_action :find_client, only: [:show]
 
   def show; end

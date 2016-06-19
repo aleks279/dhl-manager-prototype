@@ -1,5 +1,7 @@
 class DriversController < ApplicationController
 
+  before_action :authenticate_driver!
+  
   before_action :find_driver
 
   def show; end

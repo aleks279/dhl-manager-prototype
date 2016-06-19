@@ -1,5 +1,7 @@
 class TrucksController < ApplicationController
 
+  before_action :authenticate_driver!
+  
   before_action :find_truck, only: [:show]
 
   def index

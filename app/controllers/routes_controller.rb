@@ -1,4 +1,6 @@
 class RoutesController < ApplicationController
+  
+  before_action :authenticate_driver!
 
   before_action :find_route, only: [:show]
 
