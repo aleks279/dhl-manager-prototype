@@ -12,6 +12,7 @@ namespace :load_products do
     Rake::Task['load_products:admin_user'].invoke
     Rake::Task['load_users:drivers'].invoke
     Rake::Task['load_users:trucks'].invoke
+    Rake::Task['load_users:routes'].invoke
   end
 
   desc "Creates admin user"

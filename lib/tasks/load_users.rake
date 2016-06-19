@@ -24,7 +24,9 @@ namespace :load_users do
         plate_number: "10000#{t}",
         year: 2010,
         weight_capacity: Random.rand(100000),
-        model: "T-2000"
+        model: "T-2000",
+        latitude: 9.8580844,
+        longitude: -83.915223
       )
     end
   end

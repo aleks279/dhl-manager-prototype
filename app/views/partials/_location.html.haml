@@ -1,0 +1,22 @@
+#map
+:javascript
+  function initMap() {
+    var location = {lat: #{ resource.latitude }, lng: #{ resource.longitude } };
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+        center: location,
+        zoom: 16
+    });
+
+    addMarker(location, map);
+  }
+
+  // Adds a marker to the map.
+  function addMarker(location, map) {
+    var marker = new google.maps.Marker({
+      position: location,
+      label: 'T',
+      map: map
+    });
+  }
+%script{:async => "", :defer => "", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyChOkziUov5u1-kYoHw7lc5smTGitC30QM&callback=initMap"}

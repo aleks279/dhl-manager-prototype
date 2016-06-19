@@ -16,6 +16,12 @@ footer {
   color: white;
 }
 
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
+}
+
 .main-page {
   min-height: calc(100% - 132px);
   position: relative;
