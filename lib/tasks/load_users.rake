@@ -29,7 +29,22 @@ namespace :load_users do
     end
   end
 
+  desc "Create routes"
+  task routes: :environment do
+    6.times do |r|
+      update_or_create_route(
+        name: "Route #{r}"
+      )
+    end
+  end
+
   # Helpers
+
+  def update_or_create_route(attributes)
+    route = Route.find_or_initialize_by(name: attributes.delete(:name))
+    route.update_attributes(attributes)
+    route
+  end
 
   def update_or_create_truck(attributes)
     truck = Truck.find_or_initialize_by(plate_number: attributes.delete(:plate_number))

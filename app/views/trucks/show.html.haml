@@ -1,27 +1,28 @@
-= render partial: 'partials/cover_board', locals: { resource: @driver }
+= render partial: 'partials/cover_board_truck', locals: { resource: @truck }
 
 .row
   .col-md-6.col-md-offset-3.lightgrey
     %hr
-    %h3 Personal information:
+    %h3 Truck information:
     %h4.bottom_margin
-      Email:
+      Year:
     %p.bottom_margin
-      #{ @driver.email }
+      #{ @truck.year }
     %h4.bottom_margin
-      Phone:
+      Model:
     %p.bottom_margin
-      #{ @driver.phone }
+      #{ @truck.model }
     %h4.bottom_margin
-      Address:
+      Weight capacity:
     %p.bottom_margin
-      #{ @driver.address }
+      #{ @truck.weight_capacity }
+    %h4.bottom_margin
 
 / .row
 /   .col-md-6.col-md-offset-3.lightgrey
 /     %hr
 /     %h3 Videos:
-/     - @driver.youtube_links.in_groups_of(5).each do |link_group|
+/     - @truck.youtube_links.in_groups_of(5).each do |link_group|
 /       .spacing-top
 /         - link_group.each do |link|
 /           - if link

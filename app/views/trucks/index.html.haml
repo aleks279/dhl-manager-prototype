@@ -3,7 +3,7 @@
     - truck_group.each do |truck|
       - if truck
         .col-md-1
-        .col-md-2.truck-summary
+        .col-md-2.band-summary
           = link_to "#{image_tag('truck-placeholder.png')}".html_safe, truck
           .col-md-12
             %h3 #{ truck.plate_number }
