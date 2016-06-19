@@ -1,0 +1,11 @@
+- @routes.in_groups_of(3).each do |route_group|
+  .row.spacing-top
+    - route_group.each do |route|
+      - if route
+        .col-md-1
+        .col-md-2.route-summary
+          = link_to "#{image_tag('route-placeholder.png')}".html_safe, route
+          .col-md-12
+            %h3 #{ route.name }
+            %hr
+        .col-md-1
