@@ -16,7 +16,7 @@ class Drivers::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     case resource
-    when :user, Driver
+    when :driver, Driver
       driver_path(resource)
     else
       super

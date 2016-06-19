@@ -1,9 +1,22 @@
-.user-types
-  %h2.center
-    Choose a user type:
-  %nav
-    %ul.pager
-      %li.type
-        = link_to 'Driver', new_driver_session_path
-      %li.type
-        = link_to 'Administrator', new_admin_user_session_path
+- if current_driver
+  .user-types
+    %h2.center
+      Welcome
+    %nav
+      %ul.pager
+        %li.type
+          = link_to 'Personal profile', driver_path(current_driver)
+        %li.type
+          = link_to 'Routes', routes_path
+        %li.type
+          = link_to 'Trucks', trucks_path
+- else
+  .user-types
+    %h2.center
+      Choose a user type:
+    %nav
+      %ul.pager
+        %li.type
+          = link_to 'Driver', new_driver_session_path
+        %li.type
+          = link_to 'Administrator', new_admin_user_session_path
