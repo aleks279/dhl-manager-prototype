@@ -20,8 +20,7 @@ ActiveAdmin.register Order do
   form do |f|
     f.inputs "Order Details" do
       f.input :origin_country
-      f.input :description
-      f.input :payment_type, label: 'Payment Type', collection: PaymentType.all
+      # f.input :payment_type, label: 'Payment Type', collection: PaymentType.all
     end
     f.actions
   end

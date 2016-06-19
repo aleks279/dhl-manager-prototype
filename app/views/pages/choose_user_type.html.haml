@@ -1,0 +1,9 @@
+.user-types
+  %h2.center
+    Choose a user type:
+  %nav
+    %ul.pager
+      %li.type
+        = link_to 'Driver', new_driver_session_path
+      %li.type
+        = link_to 'Administrator', new_admin_user_session_path

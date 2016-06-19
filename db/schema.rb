@@ -50,17 +50,14 @@ ActiveRecord::Schema.define(version: 20160618194644) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "location_id"
+    t.decimal  "latitude",    precision: 10, scale: 6
+    t.decimal  "longitude",   precision: 10, scale: 6
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "schedule_id"
   end
 
-  add_index "clients", ["location_id"], name: "index_clients_on_location_id", using: :btree
   add_index "clients", ["schedule_id"], name: "index_clients_on_schedule_id", using: :btree
-
-  create_table "clients_locations", id: false, force: :cascade do |t|
-  end
 
   create_table "clients_schedule", id: false, force: :cascade do |t|
   end
@@ -99,13 +96,6 @@ ActiveRecord::Schema.define(version: 20160618194644) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.decimal  "latitude",   precision: 10, scale: 6
-    t.decimal  "longitude",  precision: 10, scale: 6
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -252,14 +242,10 @@ ActiveRecord::Schema.define(version: 20160618194644) do
     t.integer  "year"
     t.string   "model"
     t.float    "weight_capacity"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "location_id"
-  end
-
-  add_index "trucks", ["location_id"], name: "index_trucks_on_location_id", using: :btree
-
-  create_table "trucks_locations", id: false, force: :cascade do |t|
+    t.decimal  "latitude",        precision: 10, scale: 6
+    t.decimal  "longitude",       precision: 10, scale: 6
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "types", force: :cascade do |t|
@@ -274,12 +260,10 @@ ActiveRecord::Schema.define(version: 20160618194644) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "clients", "locations"
   add_foreign_key "clients", "schedules"
   add_foreign_key "orders", "payment_types"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "presentations"
   add_foreign_key "products", "types"
-  add_foreign_key "trucks", "locations"
 end
